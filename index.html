@@ -10,23 +10,22 @@
 
 <div class="señor">
 
+    <!-- PANTALLA DE PREGUNTA -->
     <div class="container">
         <div class="fondo">
             <h2 class="pre">¿Eres Lesbiana?</h2>
 
             <button class="si">SI</button>
             <button class="no">NO</button>
+
+            <!-- 🔊 AUDIO INICIAL -->
+            <audio id="introMusic" src="loquita.mp3"></audio>
         </div>
     </div>
 
     <!-- PANTALLA FINAL -->
     <div class="final">
-        <div class="bgSharp"></div> 
-        <div class="rainbow"></div>
-        <div class="confettiLayer1"></div>
-        <div class="confettiLayer2"></div>
-
-        <h1>Feliz Cumpleaños Lesbiane meyor que te caigan muchos Dicks Argentinos felices 15 añes 👄</h1>
+        <h1>Feliz Cumpleaños Lesbiane meyor que te caigan muchos Dick Argentinos felices 15 añes 👄</h1>
 
         <audio id="musica" src="chambelan.mp3"></audio>
     </div>
@@ -34,6 +33,20 @@
 </div>
 
 <script>
+// =========================
+// SONAR LA CANCIÓN INICIAL
+// =========================
+window.addEventListener("load", () => {
+    const intro = document.getElementById("introMusic");
+    intro.volume = 1;
+    intro.play().catch(() => {
+        // si el navegador bloquea el autoplay, se reproduce cuando toquen cualquier botón
+        document.addEventListener("click", () => {
+            intro.play();
+        }, { once: true });
+    });
+});
+
 // =========================
 // BOTÓN "NO" (se escapa)
 // =========================
@@ -70,6 +83,10 @@ botonSi.addEventListener("click", () => {
         final.classList.add("active");
     }, 50);
 
+    // Pausar música inicial
+    document.getElementById("introMusic").pause();
+
+    // Reproducir música final
     const musica = document.getElementById("musica");
     musica.play();
 });
