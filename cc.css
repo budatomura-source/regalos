@@ -1,0 +1,163 @@
+/* ==========================
+   RESETEO GENERAL
+========================== */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    background: black;
+    overflow: hidden;
+}
+
+/* ==========================
+   CONTENEDOR PRINCIPAL (3 FOTOS)
+========================== */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    background-image: url(calidad.jpg), url(seps.jpg), url(gojo.jpg);
+    background-size: 33.33% 100%, 33.33% 100%, 33.33% 100%;
+    background-position: left, center, right;
+    background-repeat: no-repeat;
+}
+
+/* ==========================
+   TÍTULO
+========================== */
+h2 {
+    text-align: center;
+    padding-top: 40px;
+    font-size: 32px;
+    color: white;
+}
+
+/* ==========================
+   BOTONES
+========================== */
+button {
+    position: absolute;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: cursive;
+}
+
+.si {
+    top: 250px;
+    left: 400px;
+    color: rgb(46, 7, 97);
+}
+
+.no {
+    top: 250px;
+    left: 500px;
+    color: red;
+}
+
+/* ==========================
+   PANTALLA FINAL
+========================== */
+.final {
+    display: none;
+    width: 100%;
+    height: 100vh;
+
+    background-image: url(chicah.jpg); /* no rainbow */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    /* aparición suave */
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease, transform 1s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* CUANDO SE ACTIVE */
+.final.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ==========================
+   ARCOIRIS POR ENCIMA PERO SIN AFECTAR LA FOTO
+========================== */
+.final::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.1);
+    animation: rainbow 10s linear infinite;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 1;
+}
+
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* ==========================
+   CONFETI SUBIENDO
+========================== */
+.final::before {
+    content: "";
+    position: absolute;
+    bottom: -300px;
+    left: 0;
+    width: 100%;
+    height: 250%;
+    pointer-events: none;
+    z-index: 2;
+
+    background-image:
+        radial-gradient(circle, #ff0000 6px, transparent 7px),
+        radial-gradient(circle, #00eaff 6px, transparent 7px),
+        radial-gradient(circle, #ffea00 6px, transparent 7px),
+        radial-gradient(circle, #ff00e1 6px, transparent 7px),
+        radial-gradient(circle, #00ff00 6px, transparent 7px);
+
+    background-size: 150px 150px;
+    animation: confetti 4s linear infinite;
+}
+
+@keyframes confetti {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-300px); }
+}
+
+/* ==========================
+   TEXTO FINAL - NEON ROSADO
+========================== */
+.final h1 {
+    font-size: 30px;
+    color: #f1e1e9;
+    font-family: cursive;
+    text-shadow:
+        0 0 8px #f1d1e6,
+        0 0 15px #e0cbd8,
+        0 0 25px #eed3e2;
+    max-width: 700px;
+    text-align: center;
+    z-index: 3;
+}
+
+.pre{
+    color: black;
+    font-family: cursive;
+    margin-right: 900px;
+}

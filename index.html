@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego</title>
+    <link rel="stylesheet" href="./cc.css">
+</head>
+<body>
+
+<div class="señor">
+
+    <div class="container">
+        <div class="fondo">
+            <h2 class="pre">¿Eres Lesbiana?</h2>
+
+            <button class="si">SI</button>
+            <button class="no">NO</button>
+        </div>
+    </div>
+
+    <!-- PANTALLA FINAL -->
+    <div class="final">
+        <div class="bgSharp"></div> 
+        <div class="rainbow"></div>
+        <div class="confettiLayer1"></div>
+        <div class="confettiLayer2"></div>
+
+        <h1>Feliz Cumpleaños Lesbiane meyor que te caigan muchos Dicks Argentinos felices 15 añes 👄</h1>
+
+        <audio id="musica" src="chambelan.mp3"></audio>
+    </div>
+
+</div>
+
+<script>
+// =========================
+// BOTÓN "NO" (se escapa)
+// =========================
+const botonNo = document.querySelector(".no");
+
+botonNo.addEventListener("mouseover", mover);
+
+function mover() {
+    const cont = document.querySelector(".container");
+
+    const ancho = cont.clientWidth - botonNo.offsetWidth;
+    const alto = cont.clientHeight - botonNo.offsetHeight;
+
+    const x = Math.random() * ancho;
+    const y = Math.random() * alto;
+
+    botonNo.style.left = x + "px";
+    botonNo.style.top = y + "px";
+}
+
+// =========================
+// BOTÓN "SÍ"
+// =========================
+const botonSi = document.querySelector(".si");
+
+botonSi.addEventListener("click", () => {
+
+    document.querySelector(".container").style.display = "none";
+
+    const final = document.querySelector(".final");
+    final.style.display = "flex";
+
+    setTimeout(() => {
+        final.classList.add("active");
+    }, 50);
+
+    const musica = document.getElementById("musica");
+    musica.play();
+});
+</script>
+
+</body>
+</html>
